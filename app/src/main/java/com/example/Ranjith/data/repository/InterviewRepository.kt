@@ -83,6 +83,11 @@ class InterviewRepository(context: Context) {
     fun getApiKey(): String {
         val key = prefs.getString(KEY_API_KEY, null)
         if (key.isNullOrBlank()) {
+            val defaultKey = com.rithika.lock.data.api.Secrets.DEFAULT_API_KEY
+            if (defaultKey.isNotBlank() && defaultKey != "YOUR_API_KEY_HERE") {
+                saveApiKey(defaultKey)
+                return defaultKey
+            }
             return ""
         }
         return key

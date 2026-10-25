@@ -46,6 +46,10 @@ captures/
 *.keystore
 upload_certificate.pem
 
+# API Keys and Secrets
+**/Secrets.kt
+secrets.properties
+
 # External native build folder
 .externalNativeBuild/
 .cxx/
