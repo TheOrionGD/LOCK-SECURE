@@ -70,8 +70,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 }
 
-val secretsFile = layout.projectDirectory.file("src/main/java/com/example/Ranjith/data/api/Secrets.kt").asFile
-val exampleFile = layout.projectDirectory.file("src/main/java/com/example/Ranjith/data/api/Secrets.kt.example").asFile
+val secretsFile = layout.projectDirectory.file("src/main/java/com/rithika/lock/data/api/Secrets.kt").asFile
+val exampleFile = layout.projectDirectory.file("src/main/java/com/rithika/lock/data/api/Secrets.kt.example").asFile
 if (!secretsFile.exists() && exampleFile.exists()) {
     exampleFile.copyTo(secretsFile)
 }
