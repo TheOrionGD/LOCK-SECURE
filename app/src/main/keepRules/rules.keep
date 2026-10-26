@@ -1,0 +1,11 @@
+# Add project specific R8 rules here.
+# AGP will combine all keep rule files in src/main/keepRules to pass to R8
+#
+# For more details, see
+#   https://d.android.com/r/tools/r8/keep-rules
+
+# Keep data models used with Gson serialization/deserialization
+-keepclassmembers class com.rithika.lock.data.model.** { *; }
+-keep class com.rithika.lock.data.model.** { *; }
+-keepclassmembers class com.rithika.lock.data.evaluation.** { *; }
+-keep class com.rithika.lock.data.evaluation.** { *; }
