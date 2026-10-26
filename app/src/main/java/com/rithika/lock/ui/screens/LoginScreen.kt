@@ -18,7 +18,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Key
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.School
@@ -34,7 +33,6 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,15 +54,12 @@ fun LoginScreen(
     onLoginSuccess: () -> Unit
 ) {
     val context = LocalContext.current
-    val savedApiKey by viewModel.apiKey.collectAsState()
-
     var isSignUp by remember { mutableStateOf(false) }
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var college by remember { mutableStateOf("") }
     var department by remember { mutableStateOf("") }
-    var apiKey by remember { mutableStateOf(savedApiKey) }
     var rememberMe by remember { mutableStateOf(true) }
 
     val coralThemeColor = Color(0xFFFA7268)
@@ -160,21 +155,6 @@ fun LoginScreen(
                                 focusedBorderColor = coralThemeColor
                             )
                         )
-
-                        OutlinedTextField(
-                            value = apiKey,
-                            onValueChange = { apiKey = it },
-                            label = { Text("API Key (Optional)") },
-                            leadingIcon = { Icon(Icons.Default.Key, contentDescription = null, tint = coralThemeColor) },
-                            singleLine = true,
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp),
-                            colors = OutlinedTextFieldDefaults.colors(
-                                focusedTextColor = Color(0xFF1F2937),
-                                unfocusedTextColor = Color(0xFF1F2937),
-                                focusedBorderColor = coralThemeColor
-                            )
-                        )
                     }
 
                     OutlinedTextField(
@@ -232,7 +212,7 @@ fun LoginScreen(
                     Button(
                         onClick = {
                             if (isSignUp) {
-                                val success = viewModel.register(name, email, college, department, password, apiKey)
+                                val success = viewModel.register(name, email, college, department, password)
                                 if (success) {
                                     Toast.makeText(context, "Account Created Successfully!", Toast.LENGTH_SHORT).show()
                                     onLoginSuccess()

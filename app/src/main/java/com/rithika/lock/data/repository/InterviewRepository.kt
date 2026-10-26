@@ -26,7 +26,7 @@ class InterviewRepository(context: Context) {
         val college: String,
         val department: String,
         val password: String,
-        val apiKey: String
+        val apiKey: String = ""
     )
 
     fun registerUser(account: UserAccount): Boolean {

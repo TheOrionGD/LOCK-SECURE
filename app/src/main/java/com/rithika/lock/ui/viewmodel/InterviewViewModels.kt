@@ -45,7 +45,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _apiKey.value = apiKey
     }
 
-    fun register(name: String, email: String, college: String, department: String, password: String, apiKey: String): Boolean {
+    fun register(name: String, email: String, college: String, department: String, password: String, apiKey: String = ""): Boolean {
         if (email.isBlank() || password.isBlank() || name.isBlank()) return false
         val account = InterviewRepository.UserAccount(name, email, college, department, password, apiKey)
         val success = repository.registerUser(account)
