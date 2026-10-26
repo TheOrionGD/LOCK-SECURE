@@ -16,8 +16,8 @@ android {
         applicationId = "com.rithika.lock"
         minSdk = 24
         targetSdk = 37
-        versionCode = 9
-        versionName = "1.0.8"
+        versionCode = 8
+        versionName = "1.0.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
